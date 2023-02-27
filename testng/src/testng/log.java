@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -31,7 +32,7 @@ public class log {
 		
 	}
 	
-	@Test
+	@Test(priority = 1)
 	public void login() throws InterruptedException, IOException {
 		driver.get("https://burnerparts.com/");
 		System.out.println(driver.getTitle());
@@ -48,7 +49,7 @@ public class log {
 		  Files.copy(f, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\Burnerlogin.jpg"));
 	}
 	
-		  @Test
+		  @Test(priority = 2)
 		  public void subs() throws InterruptedException, IOException {
 			  
 		  driver.navigate().to("https://burnerparts.com/newsletter/manage/");
@@ -64,48 +65,56 @@ public class log {
 			  Files.copy(f, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\Burnersubs.jpg"));
 			Thread.sleep(3000);
 		}
-
-	//@Test
-	//public void newsletter() throws InterruptedException, IOException {
-		
-		
 	//}
-	@Test
+	@Test(priority = 3)
 	public void homepage() throws InterruptedException, IOException {
 		
 		driver.get("https://burnerparts.com/");
 		File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		  
 		  Files.copy(f, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\BurnerHome.jpg"));
+		  Files.copy(f, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\Homelogo.jpg"));
+		  Files.copy(f, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\BurnerBanner.jpg"));
 		Thread.sleep(2000);
 	}
 	
-	@Test
-	public void opencat() throws InterruptedException {
-		WebElement cat1 = driver.findElement(By.id("navbarDropdown"));
-		cat1.click();
-		JavascriptExecutor Scrool = (JavascriptExecutor) driver;
-		Scrool.executeScript("window.scrollBy(0,1000)", "");
-		Thread.sleep(2000);
-	}
-	
-	@Test
+	@Test(priority = 4)
 	public void search() throws InterruptedException, IOException {
 		WebElement search = driver.findElement(By.id("search"));
-		search.sendKeys("Burner");
+		search.sendKeys("66642VL");
 		search.click();
-		WebElement searchres = driver.findElement(By.xpath("//*[@id=\"search_mini_form\"]/div[2]/button"));
-		searchres.click();
+		//WebElement searchres = driver.findElement(By.xpath("//*[@id=\"search_mini_form\"]/div[2]/button"));
+		//searchres.click();
 		File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		  
 		  Files.copy(f, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\Burnersearch.jpg"));
 		Thread.sleep(3000);
-		
+	}
+	@Test(priority = 5)
+	public void categories() throws IOException {
+		driver.navigate().to("https://burnerparts.com/burners/burners.html");
+  File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+  Files.copy(f, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\categories.jpg"));
+ 
+	}
+	@Test(priority = 6)
+	public void productpage() throws IOException, InterruptedException {
+		WebElement product = driver.findElement(By.xpath("//*[@id=\"html-body\"]/div[3]/main/div/div[2]/div[2]/div[4]/div/div[1]/strong/a"));
+		product.click();
+		File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		  Files.copy(f, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\product page.jpg"));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0, 600)");
+		Thread.sleep(2000);
+		driver.findElement(By.id("product-addtocart-button")).click();
+		Thread.sleep(3000);
+		File z = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		  Files.copy(z, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\Addtocart.jpg"));
 	}
 	
+
 	
 	@AfterClass
-	
 	public void close() throws IOException {
 	File f = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	  

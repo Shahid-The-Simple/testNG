@@ -5,9 +5,9 @@
     <classes>
       <class name="testng.log">
         <methods>
+          <include name="productpage"/>
           <include name="close"/>
           <include name="setup"/>
-          <include name="subs"/>
         </methods>
       </class> <!-- testng.log -->
     </classes>
