@@ -108,6 +108,7 @@ public class log {
 		Thread.sleep(2000);
 		driver.findElement(By.id("product-addtocart-button")).click();
 		Thread.sleep(3000);
+		js.executeScript("window.scrollBy(0, -500)");
 		File z = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		  Files.copy(z, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\Addtocart.jpg"));
 	}
