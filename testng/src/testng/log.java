@@ -113,7 +113,22 @@ public class log {
 		  Files.copy(z, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\Addtocart.jpg"));
 	}
 	
-
+@Test(priority = 7)
+public void checkout() throws InterruptedException, IOException {
+	driver.findElement(By.xpath("//*[@id=\"html-body\"]/div[3]/header/div[2]/div[1]/div/div[2]/div/a/i")).click();
+	Thread.sleep(2000);
+	File z = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	  Files.copy(z, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\shoppingcart.jpg"));
+	  driver.findElement(By.xpath("//*[@id=\"XSE8FPP\"]")).sendKeys("66102");
+	  Thread.sleep(2000);
+	  JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0, 600)");
+		driver.findElement(By.xpath("//*[@id=\"s_method_ups_GND\"]")).click();
+		driver.findElement(By.xpath("//*[@id=\"html-body\"]/div[3]/main/div/div[3]/div/div[2]/div[1]/ul/li[1]/button")).click();
+	  Thread.sleep(2000);
+	  File s = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	  Files.copy(s, new File("C:\\Users\\shahi\\OneDrive\\Documents\\testSS\\proceedtocheckou.jpg"));
+}
 	
 	@AfterClass
 	public void close() throws IOException {
